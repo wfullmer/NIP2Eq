@@ -1,0 +1,18 @@
+-9.81    c (hyd) :: -1 = Hyperbolic, 0 = Para, 1 = Illposed
+0.0  	eps     :: (artificial viscosity, ie Holmas type)
+0.0  	mu      :: (viscosity) 
+0.0     sigma   :: (surface tension)
+0.0  	fi
+2       method 	:: 1 = EDFOU, 2 = EDFOU2; 201 = Iter EDFOU; 999 = tester
+102       (ic) Problem	:: 0 = WF, 1 = MMS1, 2 = MMS2, 3 = MMS3 
+2      BC      :: 1 = Periodic, 2 = Mirror
+0.0     x0      
+2000.0    xend
+200   	N       :: Use -ve N to make (x0,xend) in units of pi
+-0.01    dt      :: Use -ve dt to specify dt/dx 
+0.0     t0 
+55.      tend    :: Use -ve tend to make (t0,tend) in units of pi
+-50     print freq 	:: (tecplot)
+50.0     plot time	:: (acgrace)
+
+~

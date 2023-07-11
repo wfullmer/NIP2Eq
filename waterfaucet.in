@@ -1,0 +1,16 @@
+0.0  	c
+0.0  	eps
+0.0 	mu
+0.0  	sigma
+2	method 	
+101  	IC
+4  	BC
+0.0     x0
+12.0    xend
+1200      N
+-0.01  	dt
+0.0 	t0
+5.0 	tend
+1000	print freq 
+3.     plot time
+

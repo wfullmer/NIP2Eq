@@ -1,0 +1,4 @@
+need to add: if(bc = periodic) then call bndry     affter the source call
+  then wrap all the "update" terms into a subroutine
+  need to apply bndry after every exact call (see exact subroutine, all calls need to be removed)
+  put all subroutines into a seperate file that will get cat'd into a large otherwise empty module
