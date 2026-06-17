@@ -41,25 +41,25 @@ cat rk3s3.f90 >> mod_subs.f90
 echo 'END MODULE subs ' >> mod_subs.f90
 #
 echo '   Compiling mod_prec ... '
-ifort -c mod_prec.f90
+gfortran -c mod_prec.f90
 #
 echo '   Compiling mod_global ... '
-ifort -c mod_global.f90
+gfortran -c mod_global.f90
 #
 echo '   Compiling mod_inout ... '
-ifort -c mod_inout.f90
+gfortran -c mod_inout.f90
 #
 echo '   Compiling mod_subs ... '
-ifort -c mod_subs.f90
+gfortran -c mod_subs.f90
 #
 #
 #
 echo '   Building nip2eq.x ... '
 #
-ifort -g -CA -CB -CU -o nip2eq.x main.f90 mod_prec.o mod_global.o mod_inout.o mod_subs.o 
+gfortran -g -o nip2eq.x main.f90 mod_prec.o mod_global.o mod_inout.o mod_subs.o
 #
 #
-#	Clean up Objects 
+#	Clean up Objects
 #
 rm *.o
 #
