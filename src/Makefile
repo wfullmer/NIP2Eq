@@ -3,7 +3,7 @@ FC = gfortran
 FFLAGS = -g
 
 # Executable name
-TARGET = nip2eq.x
+TARGET = ../nip2eq.x
 
 # Separate modules
 MODS = mod_prec.o mod_global.o mod_inout.o mod_subs.o
