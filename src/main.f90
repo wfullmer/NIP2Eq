@@ -23,15 +23,15 @@ PROGRAM NIP2EQ
 ! 	Data Dictionary:
 !
  INTEGER :: ii, jj
- INTEGER :: dbug
+ INTEGER :: debug
  REAL(dp) :: print_time, crash, term
  REAL(dp) :: L2a, L2u
  REAL(dp) :: aamp, uamp 
  REAL(dp) :: fft_time
 !
 !
- dbug = 7
- OPEN(UNIT=dbug, FILE='info.dat', STATUS='UNKNOWN')
+ debug = 7
+ OPEN(UNIT=debug, FILE='debug.dat', STATUS='UNKNOWN')
 !
 !
 !	Get user supplied input data
@@ -118,10 +118,10 @@ PROGRAM NIP2EQ
 !
  term = 1000.*ABS(MAXVAL(an))
 !
- CALL amovout(xc,an,1)
- CALL umovout(xj,un,2)
- CALL amovout(xc,aex,5)
- CALL umovout(xj,uex,6)
+ CALL amovout(xc,an,801)
+ CALL umovout(xj,un,802)
+ CALL amovout(xc,aex,805)
+ CALL umovout(xj,uex,806)
  WRITE(*,*) 'Movie data generated for time =', time
 !
 !
@@ -260,10 +260,10 @@ PROGRAM NIP2EQ
   IF (time .GT. fft_time) THEN
 !!!    aamp = MAXVAL(an(fstn:lstn)) - MINVAL(an(fstn:lstn))
 !!!    uamp = MAXVAL(un(fstj:lstj)) - MINVAL(un(fstj:lstj))
-!!!    WRITE(dbug,*) time, aamp, uamp
+!!!    WRITE(debug,*) time, aamp, uamp
     fft_time = fft_time + pi_d/2.0
     DO ii = fstn, lstn
-      WRITE(dbug,*) an(ii)
+      WRITE(debug,*) an(ii)
     END DO
   END IF
 !
@@ -286,10 +286,10 @@ PROGRAM NIP2EQ
 !
   IF (time .GT. print_time) THEN
     CALL exact
-    CALL amovout(xc,an,1)
-    CALL umovout(xj,un,2)
-    CALL amovout(xc,aex,5)
-    CALL umovout(xj,uex,6)
+    CALL amovout(xc,an,801)
+    CALL umovout(xj,un,802)
+    CALL amovout(xc,aex,805)
+    CALL umovout(xj,uex,806)
 !
 !!!!!
 !!!!
@@ -305,7 +305,7 @@ PROGRAM NIP2EQ
 !!      L2u = L2u + (un(jj) - uex(jj))**2
 !!    END DO
 !!    L2u = SQRT(L2u/Nx)
-!!    WRITE(dbug,*) time, L2a, L2u
+!!    WRITE(debug,*) time, L2a, L2u
 !!!
 !!!!
 !!!!!
@@ -338,8 +338,8 @@ PROGRAM NIP2EQ
       WRITE(*,*) 'L2u = ', L2u
       WRITE(*,*) '  '
 !!!    END IF
-    CALL plot(xc,an,aex,3)
-    CALL plot(xj,un,uex,4)
+    CALL plot(xc,an,aex,803)
+    CALL plot(xj,un,uex,804)
     WRITE(*,*) '  '
     WRITE(*,*) 'Plot data generated for time =', time
     WRITE(*,*) '  '
@@ -354,8 +354,8 @@ END DO
 !
 !
 IF (time .GT. 1.5*tend) then
-  CALL plot(xc,an,ao,3)
-  CALL plot(xj,un,uo,4)
+  CALL plot(xc,an,ao,803)
+  CALL plot(xj,un,uo,804)
 END IF
 !
 !
@@ -385,13 +385,13 @@ WRITE(*,*) ' sigma = ', sigma
 WRITE(*,*) ' fi    = ', fi
 !
 !
-CLOSE(1)
-CLOSE(2)
-CLOSE(3)
-CLOSE(4)
-CLOSE(5)
-CLOSE(6)
-CLOSE(dbug)
+CLOSE(801)
+CLOSE(802)
+CLOSE(803)
+CLOSE(804)
+CLOSE(805)
+CLOSE(806)
+CLOSE(debug)
 !
 DEALLOCATE(xc,an,ao,Sa,aex)
 DEALLOCATE(arhs,a1,a2)
