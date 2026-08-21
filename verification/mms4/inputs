@@ -2,6 +2,7 @@
 0.0  	eps     :: (artificial viscosity, ie Holmas type)
 0.0  	mu      :: (viscosity) 
 0.0     sigma   :: (surface tension)
+0.0  	fi
 2       method 	:: 1 = EDFOU, 2 = EDFOU2
 4       (ic) Problem	:: 0 = WF, 1 = MMS1, 2 = MMS2, 3 = MMS3 
 4      BC      :: 1 = Periodic

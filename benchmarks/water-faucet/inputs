@@ -2,6 +2,7 @@
 0.0  	eps
 0.0 	mu
 0.0  	sigma
+0.0  	fi
 2	method 	
 101  	IC
 4  	BC
