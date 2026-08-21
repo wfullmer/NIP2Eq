@@ -186,12 +186,12 @@ CONTAINS
 !
   INTEGER :: i, j
 !
-  OPEN(UNIT=1, FILE='output1.dat', STATUS='UNKNOWN')
-  OPEN(UNIT=5, FILE='output5.dat', STATUS='UNKNOWN')
+  OPEN(UNIT=801, FILE='output1.dat', STATUS='UNKNOWN')
+  OPEN(UNIT=805, FILE='output5.dat', STATUS='UNKNOWN')
   100 FORMAT(F12.5,F12.5)
 !
-  IF (io .EQ. 1) WRITE(io,*) 'VARIABLES = "x", "a" '
-  IF (io .EQ. 5) WRITE(io,*) 'VARIABLES = "x", "aex" '
+  IF (io .EQ. 801) WRITE(io,*) 'VARIABLES = "x", "a" '
+  IF (io .EQ. 805) WRITE(io,*) 'VARIABLES = "x", "aex" '
   WRITE(io,*) 'ZONE I=',Nx,', ZONETYPE=ORDERED,'
   WRITE(io,*) 'DATAPACKING=POINT, SOLUTIONTIME=',time
 !
@@ -199,7 +199,7 @@ CONTAINS
       WRITE(io,100) x(i), u(i)
   END DO
 !
-!  CLOSE(io)  <<<------- REMEMBER TO CLOSE UNIT=1 POINTER IN THE MAIN PROGRAM FILE !!!
+!  CLOSE(io)  <<<------- REMEMBER TO CLOSE UNIT=801 POINTER IN THE MAIN PROGRAM FILE !!!
 !
  END SUBROUTINE amovout
 !
@@ -219,11 +219,12 @@ CONTAINS
 !
   INTEGER :: i, j
 !
-  OPEN(UNIT=2, FILE='output2.dat', STATUS='UNKNOWN')
-  OPEN(UNIT=6, FILE='output6.dat', STATUS='UNKNOWN')
+  OPEN(UNIT=802, FILE='output2.dat', STATUS='UNKNOWN')
+  OPEN(UNIT=806, FILE='output6.dat', STATUS='UNKNOWN')
   200 FORMAT(F12.5,F12.5)
 !
-  WRITE(io,*) 'VARIABLES = "x", "u"'
+  IF (io .EQ. 802) WRITE(io,*) 'VARIABLES = "x", "u"'
+  IF (io .EQ. 806) WRITE(io,*) 'VARIABLES = "x", "uex"'
   WRITE(io,*) 'ZONE I=',Nx+1,', ZONETYPE=ORDERED,'
   WRITE(io,*) 'DATAPACKING=POINT, SOLUTIONTIME=',time
 !
@@ -231,7 +232,7 @@ CONTAINS
       WRITE(io,200) x(i), u(i)
   END DO
 !
-!  CLOSE(io)  <<<------- REMEMBER TO CLOSE UNIT=2 POINTER IN THE MAIN PROGRAM FILE !!!
+!  CLOSE(io)  <<<------- REMEMBER TO CLOSE UNIT=802 POINTER IN THE MAIN PROGRAM FILE !!!
 !
  END SUBROUTINE umovout
 !
@@ -251,23 +252,23 @@ SUBROUTINE plot(x,u1,u2,io)
 !
   INTEGER :: i, j
 !
-  OPEN(UNIT=3, FILE='output3.dat', STATUS='UNKNOWN')
-  OPEN(UNIT=4, FILE='output4.dat', STATUS='UNKNOWN')
+  OPEN(UNIT=803, FILE='output3.dat', STATUS='UNKNOWN')
+  OPEN(UNIT=804, FILE='output4.dat', STATUS='UNKNOWN')
   300 FORMAT(F12.5,F12.5,F12.5)
 !
-  IF (io .EQ. 3) THEN
+  IF (io .EQ. 803) THEN
     WRITE(io,*) '# time = ', time, '  ::  xc    void'
     DO i = 1, N
       WRITE(io,300) x(i), u1(i), u2(i)
     END DO
-  ELSEIF (io .EQ. 4) THEN
+  ELSEIF (io .EQ. 804) THEN
     WRITE(io,*) '# time = ', time, '  ::  xj    vel'
     DO i = 1, N+1
       WRITE(io,300) x(i), u1(i), u2(i)
     END DO
   ENDIF
 !
-!  CLOSE(io)  <<<------- REMEMBER TO CLOSE UNIT=3,4 POINTER IN THE MAIN PROGRAM FILE !!!
+!  CLOSE(io)  <<<------- REMEMBER TO CLOSE UNIT=803,804 POINTER IN THE MAIN PROGRAM FILE !!!
 !
 !
  END SUBROUTINE plot
