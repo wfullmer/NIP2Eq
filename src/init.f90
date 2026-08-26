@@ -91,10 +91,10 @@ SUBROUTINE init
 !
 !       Dam break
 !
-      ao = 0.1
+      ao = 1.0e-3
       uo = 0.0
       DO i = 1, buffer + INT(Nx/2)
-        ao(i) = 10.
+        ao(i) = 5.0e-3
       END DO
 !
     CASE (201)
